@@ -30,7 +30,24 @@ import test from "./test.mjs";
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
+const tests = test("Sum function");
 
+tests.isEqual(multiply(1, 2), 2, "1 Multiplied by 2 should be 2");
+tests.isEqual(multiply(-5, 5), -25, "-5 Multiplied by 5 should be -25");
+tests.isEqual(multiply(2.5, 3.5), 8.75, "2.5 Multiplied by 3.5 should be 8.75");
+tests.isEqual(multiply("1", 2), 2, '"1" Multiplied by 2 should return 2"');
+tests.isEqual(multiply(4, 4, 4, 4), 256, ' 4 Multiplied by 4 Multiplied by 4 Multiplied by 4 should return 256');
+
+// Invalid inputs
+tests.isNotANumber(multiply(1, null), "1 Multiplied by null should return NaN");
+tests.isNotANumber(multiply(undefined, 3), "undefined Multiplied by 3 should return NaN");
+tests.isNotANumber(multiply(NaN, 3), "NaN Multiplied by 3 should return NaN");
+
+// Edge cases
+tests.isEqual(multiply(), 0, "no parameters should return 0");
+tests.isEqual(multiply(0, 0), 0, "0 Multiplied by 0 should be 0");
+tests.isEqual(multiply(Infinity, 1), Infinity, "Infinity Multiplied by 1 should be Infinity");
+tests.isEqual(multiply(-Infinity, 1), -Infinity, "-Infinity Multiplied by 1 should be -Infinity");
 
 
 //#endregion
