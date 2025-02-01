@@ -19,8 +19,15 @@ import test from "./test.mjs";
 
 //#region function -----------------------------------------------------------------
 // Write your function her.
-
-
+function multiply(...numbers) {
+    if (numbers.length === 0) return 0;
+    if (numbers.some(num => num === null || num === undefined)) {
+        return NaN;
+    }
+    
+    let sum = numbers.reduce((result, num) => result * num, 1);
+    return sum;
+}
 
 //#endregion
 
@@ -42,6 +49,7 @@ tests.isEqual(multiply(4, 4, 4, 4), 256, ' 4 Multiplied by 4 Multiplied by 4 Mul
 tests.isNotANumber(multiply(1, null), "1 Multiplied by null should return NaN");
 tests.isNotANumber(multiply(undefined, 3), "undefined Multiplied by 3 should return NaN");
 tests.isNotANumber(multiply(NaN, 3), "NaN Multiplied by 3 should return NaN");
+tests.isNotANumber(multiply("yes", 3), "yes Multiplied by 3 should return NaN");
 
 // Edge cases
 tests.isEqual(multiply(), 0, "no parameters should return 0");
