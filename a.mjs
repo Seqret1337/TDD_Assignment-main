@@ -37,7 +37,7 @@ function multiply(...numbers) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-const tests = test("Sum function");
+const tests = test("Multiply function");
 
 tests.isEqual(multiply(1, 2), 2, "1 Multiplied by 2 should be 2");
 tests.isEqual(multiply(-5, 5), -25, "-5 Multiplied by 5 should be -25");
