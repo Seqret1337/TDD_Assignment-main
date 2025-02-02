@@ -30,6 +30,14 @@ function formatName(name) {
         return "";
     }
 
+    const specialCharacters = "!@#$%^&*()-_=+[{]};:'\",<.>/?\\|";
+
+    for (let char of trimName) {
+        if (specialCharacters.includes(char)) {
+            return null;
+        }
+    }
+
     return trimName.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
 
