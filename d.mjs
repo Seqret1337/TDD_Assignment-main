@@ -24,6 +24,12 @@ import test from "./test.mjs";
 // Write your function her.
 
 function guessNumber(target, guess) {
+    if (typeof target !== "number" || !Number.isInteger(target) || target < 0) {
+        return null;
+    }
+    if (typeof guess !== "number" || !Number.isInteger(guess) || guess < 0) {
+        return null;
+    }
     if (guess < target) {
         return "Too low";
     }
@@ -50,6 +56,9 @@ tests.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10,
 
 
 // Edge cases
-
+tests.isEqual(guessNumber(-1), null, "Negative input should return null");
+tests.isEqual(guessNumber(1.5), null, "Non-integer input should return null");
+tests.isEqual(guessNumber("5"), null, "String input should return null");
+tests.isEqual(guessNumber(null), null, "Null input should return null");
 
 //#endregion
