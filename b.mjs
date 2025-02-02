@@ -30,7 +30,7 @@ function formatName(name) {
         return "";
     }
 
-    return trimName;
+    return trimName.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
 
 
@@ -45,17 +45,9 @@ function formatName(name) {
 const tests = test("formatName");
 
 tests.isEqual(formatName(2), null, "If `name` is not a string, return null.");
-tests.isEqual(formatName("  alexander  "), "alexander", "Remove any leading or trailing whitespace from the string.");
+tests.isEqual(formatName("  alexander  "), "Alexander", "Remove any leading or trailing whitespace from the string.");
 tests.isEqual(formatName("alexander nordvaag"), "Alexander Nordvaag", "Capitalize the first letter of each word in the name");
 tests.isEqual(formatName("   "), "", "If the string is empty (after trimming), return an empty string.");
 tests.isEqual(formatName("!@#$%^&*()-_=+[{]};:'\",<.>/?\\|"), null, "If the string contains special characters return null.");
-
-
-
-
-
-
-
-
 
 //#endregion
