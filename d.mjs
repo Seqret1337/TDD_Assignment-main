@@ -53,7 +53,15 @@ tests.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15,
 tests.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
 
 // Invalid inputs
-
+tests.isEqual(guessNumber(-1, 5), null, "Negative target should return null");
+tests.isEqual(guessNumber(5, -1), null, "Negative guess should return null");
+tests.isEqual(guessNumber(1.5, 2), null, "Non-integer target should return null");
+tests.isEqual(guessNumber(2, 1.5), null, "Non-integer guess should return null");
+tests.isEqual(guessNumber("yes", 2), null, "String target should return null");
+tests.isEqual(guessNumber(2, "yes"), null, "String guess should return null");
+tests.isEqual(guessNumber(null, 2), null, "null target should return null");
+tests.isEqual(guessNumber(2, null), null, "null guess should return null");
+tests.isEqual(guessNumber(), null, "Missing parameters should return null");
 
 // Edge cases
 tests.isEqual(guessNumber(-1), null, "Negative input should return null");
